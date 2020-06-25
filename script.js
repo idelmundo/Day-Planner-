@@ -15,3 +15,21 @@
 $(document).ready(function() {
     $("#currentDay").text(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
 })
+var getLocalStorageData = JSON.parse(localStorage.getItem("descriptionItem"));
+var descriptionBox = [];
+
+
+$("button").on("click", function() {
+    event.preventDefault();
+    var bigBox = $(this).parent().parent();
+    var inputValue = bigBox.find("input").val();
+    var inputId = bigBox.find("input").attr("id");
+    var descriptionObj = {
+        "input-id": inputId,
+        "input-value": inputValue
+    };
+    if (descriptionObj["input-Value"] !== "") {
+        descriptionBox.push(descriptionObj);
+        localStorage.setItem("descriptionItem", JSON.stringify(descriptionBox));
+    }
+});
