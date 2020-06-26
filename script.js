@@ -13,23 +13,42 @@
 // 6 when page refresh the s
 
 $(document).ready(function() {
+
     $("#currentDay").text(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
-})
-var getLocalStorageData = JSON.parse(localStorage.getItem("descriptionItem"));
-var descriptionBox = [];
+
+    const slots = $(".slot");
+    var currentTime = moment().format("H");
+
+    slots.each((i, e) => {
+        console.log(i, e);
+    });
 
 
-$("button").on("click", function() {
-    event.preventDefault();
-    var bigBox = $(this).parent().parent();
-    var inputValue = bigBox.find("input").val();
-    var inputId = bigBox.find("input").attr("id");
-    var descriptionObj = {
-        "input-id": inputId,
-        "input-value": inputValue
-    };
-    if (descriptionObj["input-Value"] !== "") {
-        descriptionBox.push(descriptionObj);
-        localStorage.setItem("descriptionItem", JSON.stringify(descriptionBox));
+
+
+    // local storage fetch the item with the key descriptionItem parse the string and save it in localStorageData
+    var getLocalStorageData = JSON.parse(localStorage.getItem("descriptionItem"));
+    var descriptionBox = [];
+
+    // if getLocalStroagedata not empty then save it to descriptionBox.
+    if (getLocalStorageData !== null) {
+        descriptionBox = getLocalStorageData;
     }
+
+    // THIS directing button
+    $("button").on("click", function() {
+        event.preventDefault();
+        var bigBox = $(this).parent().parent();
+
+        const theInput = bigBox.find("input");
+
+        var descriptionObj = {
+            "input-id": theInput.attr("id"),
+            "input-value": theInput.val()
+        };
+        if (descriptionObj["input-value"] !== "") {
+            descriptionBox.push(descriptionObj);
+            localStorage.setItem("descriptionItem", JSON.stringify(descriptionBox));
+        }
+    });
 });
