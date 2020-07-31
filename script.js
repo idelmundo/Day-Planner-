@@ -17,12 +17,7 @@ $(document).ready(function() {
     $("#currentDay").text(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
     const slots = $(".slot");
     var currentTime = moment().format("H");
-    slots.each((i, e) => {
-
-    });
-
-    const testData = [  {     description: "hrs",     startDate: 1593187207,     numberOfHours: 1   },    {     description: "Walk Dog",     startDate: 1593190807,     numberOfHours: 1   },    {     description: "Dog Sleep",     startDate: 1593194407,     numberOfHours: 1   }];
-
+    slots.each((i, e) => {});
 
 
     for (let i = 0; i < testData.length; i++) {
@@ -34,17 +29,15 @@ $(document).ready(function() {
     }
 
 
-    // const getLocalStorageData = testData;
 
+    const getLocalStorageData = testData;
+    var getLocalStorageData = JSON.parse(localStorage.getItem("descriptionItem"));
+    var descriptionBox = [];
 
-    // local storage fetch the item with the key descriptionItem parse the string and save it in localStorageData
-    // var getLocalStorageData = JSON.parse(localStorage.getItem("descriptionItem"));
-    // var descriptionBox = [];
-
-    // if getLocalStroagedata not empty then save it to descriptionBox.
-    // if (getLocalStorageData !== null) {
-    //     descriptionBox = getLocalStorageData;
-    // }
+    if getLocalStroagedata //not empty then save it to descriptionBox.
+    if (getLocalStorageData !== null) {
+        descriptionBox = getLocalStorageData;
+    }
 
     // THIS directing button
     $("button").on("click", function() {
