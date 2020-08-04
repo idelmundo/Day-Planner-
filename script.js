@@ -28,16 +28,15 @@ $(document).ready(function() {
 
     }
 
-
-
+    //local storage 
     const getLocalStorageData = testData;
     var getLocalStorageData = JSON.parse(localStorage.getItem("descriptionItem"));
     var descriptionBox = [];
 
-    if getLocalStroagedata //not empty then save it to descriptionBox.
-    if (getLocalStorageData !== null) {
-        descriptionBox = getLocalStorageData;
-    }
+    // if getLocalStroagedata //not empty then save it to descriptionBox.
+    // if (getLocalStorageData !== null) {
+    //     descriptionBox = getLocalStorageData;
+    // }
 
     // THIS directing button
     $("button").on("click", function() {
